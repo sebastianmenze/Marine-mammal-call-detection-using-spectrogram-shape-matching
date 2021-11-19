@@ -387,7 +387,40 @@ Here are the 40 best classifications and their respective scores:
 
 ![example_sgrams_and_score](example_sgrams_and_score.jpg)
 
-As you can see, the algorithm identified the D-calls rather well and I would guess an initial threshold values around 0.3 for this classifier. I am currently testing the algorithm on our validation dataset. Here are some preliminary ROC curves for the different calls: 
+As you can see, the algorithm identified the D-calls rather well and I would guess an initial threshold values around 0.3 for this classifier.
+
+The bounding boxes (time and frequency) of the extracted regions, additional meta-data and the classification scores are stored into a common DataFrame:
+
+```
+df
+Out[9]: 
+    index  label  area  ...  dcall_smc_rs  dcall_ioubox  dcall_score
+id                      ...                                         
+0       0      1   143  ...        0.4160      0.000000     0.000000
+1       1      2    98  ...        0.4460      0.000000     0.000000
+2       2      3   167  ...        0.5996      0.208832     0.125216
+3       3      4   373  ...        0.4668      0.332567     0.155242
+4       4      5   497  ...        0.5296      0.208845     0.110604
+..    ...    ...   ...  ...           ...           ...          ...
+66     66     67   248  ...        0.5128      0.000000     0.000000
+67     67     68   254  ...        0.5616      0.000000     0.000000
+68     68     69    60  ...        0.5464      0.000000     0.000000
+69     69     70    94  ...        0.5244      0.000000     0.000000
+70     70     71    97  ...        0.4068      0.000000     0.000000
+
+[71 rows x 25 columns]
+
+df.columns
+Out[10]: 
+Index(['index', 'label', 'area', 'mean_intensity', 'orientation',
+       'major_axis_length', 'minor_axis_length', 'weighted_centroid-0',
+       'weighted_centroid-1', 'bbox-0', 'bbox-1', 'bbox-2', 'bbox-3', 'f-1',
+       'f-2', 'f-width', 't-1', 't-2', 'duration', 'realtime', 'id',
+       'dcall_smc', 'dcall_smc_rs', 'dcall_ioubox', 'dcall_score'],
+      dtype='object')
+```
+
+ I am currently testing the algorithm on our validation dataset. Here are some preliminary ROC curves for the different calls: 
 
 ![roc_shapematch_dcalls](roc_shapematch_dcalls.png)
 
