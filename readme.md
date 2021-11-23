@@ -173,7 +173,11 @@ Here is an example for a patch the fits well to the template shape:
 
 <img src="example_smc_dcall.jpg" alt="example_smc_dcall" style="zoom:50%;" />
 
-Now I can calculate a classification score by multiplying the SMC and IoU values. The score will be 0 for patches that are in a different frequency and time range than our template and increase the more similar the shape and time-frequency range of the patch are. The full shape matching functions looks like this:
+Now I can calculate a classification score by multiplying the SMC (rescaled between 0 (noise) and 1(perfect match)) and IoU values:
+
+score = IoU * (SMC-.5)/.5
+
+The score will be 0 for patches that are in a different frequency and time range than our template and increase the more similar the shape and time-frequency range of the patch are. The full shape matching functions looks like this:
 
 ```python
 def match_shape(df, patches ,p_t_dict,p_f_dict ,shape_t, shape_f,shape_label):
