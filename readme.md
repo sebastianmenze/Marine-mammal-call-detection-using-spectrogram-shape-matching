@@ -121,6 +121,7 @@ def find_regions(audiopath,f_lim,fft_size,db_threshold,minimum_patcharea,startla
     df=df.reset_index()    
     
     df['id']= startlabel + np.arange(len(df))
+    df['filename']=audiopath     
     
     # get region dict
     sgram={}
@@ -341,7 +342,7 @@ def match_shape(df, patches ,p_t_dict,p_f_dict ,shape_t, shape_f,shape_label):
     df[shape_label+'_ioubox']=score_ioubox
       
 
-    df[shape_label+'_score'] =score_ioubox * smc_rs
+    df[shape_label+'_score'] =score_ioubox * (smc_rs-.5)/.5
     
     #     #### plot sgrams  
     # chosen=np.flip( df[shape_label+'_score'].argsort() )
