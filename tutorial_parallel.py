@@ -317,7 +317,7 @@ def match_shape(df, patches ,p_t_dict,p_f_dict ,shape_t, shape_f,shape_label):
     df[shape_label+'_ioubox']=score_ioubox
       
 
-    df[shape_label+'_score'] =score_ioubox * smc_rs
+    df[shape_label+'_score'] =score_ioubox * (smc_rs-.5)/.5
     
     #     #### plot sgrams  
     # chosen=np.flip( df[shape_label+'_score'].argsort() )
