@@ -358,4 +358,8 @@ shape_f_dcall=df_shape['Frequency'].values
 
 df=match_shape(df,patches ,p_t_dict,p_f_dict, shape_t_dcall, shape_f_dcall,'dcall')
 
+threshold=0.2
+ix=df['dcall_score']>threshold
+detection_timestamps= df.loc[ix,'realtime'] + pd.to_timedelta( df.loc[ix,'duration']/2 ,'s')
+
 
