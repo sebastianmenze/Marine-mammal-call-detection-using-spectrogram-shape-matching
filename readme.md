@@ -507,3 +507,21 @@ All of this code is also in this folder as .py files.
 
 I suggest to try out different classification score thresholds and "db_threshold" (determines the minimum signal-to-noise ration a patch must have to be considered). 
 
+If you want to extract just the timestamps for a given threshold and call shape, you can use code like this:
+
+```python
+threshold=0.2
+ix=df['dcall_score']>threshold
+detection_timestamps= df.loc[ix,'realtime'] + pd.to_timedelta( df.loc[ix,'duration']/2 ,'s')
+```
+wich give you a list of the timestamps like this:
+```
+detection_timestamps
+Out[13]: 
+id
+13   2017-04-05 17:40:22.133010864
+14   2017-04-05 17:41:31.608444214
+15   2017-04-05 17:41:37.460586547
+17   2017-04-05 17:42:35.081680298
+dtype: datetime64[ns]
+```
