@@ -507,6 +507,8 @@ All of this code is also in this folder as .py files.
 
 I suggest to try out different classification score thresholds and "db_threshold" (determines the minimum signal-to-noise ration a patch must have to be considered). 
 
+## Extract only detection timestamps from the shapematching dataframe
+
 If you want to extract just the timestamps for a given threshold and call shape, you can use code like this:
 
 ```python
