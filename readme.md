@@ -425,21 +425,18 @@ Index(['index', 'label', 'area', 'mean_intensity', 'orientation',
       dtype='object')
 ```
 
- I am currently testing the algorithm on our validation dataset. Here are some preliminary ROC curves for the different calls: 
+Linn Asvestad used this decetor for her master thesis, and a valdiation using 5% of her recording gave the following ROC curces for fin and blue whale calls:
 
-![roc_shapematch_dcalls](roc_shapematch_dcalls.png)
-
-
-
-![roc_shapematch_fw_downsweep](roc_shapematch_fw_downsweep.png)
+![](roc_finwhale_2022.png)
 
 
 
-![roc_shapematch_fw20](roc_shapematch_fw20.jpeg)
+![](roc_dcalls_2022.png)
 
 
 
-![roc_shapematch_srw](roc_shapematch_srw.png)
+![](roc_zcalls_2022.png)
+
 
 ## Run the detector in parallel 
 
